@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PPE42021.Vues.CategorieVue">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="{Binding Test}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+            <Image Source="https://www.absolutegeeks.com/wp-content/uploads/2020/04/Screen-Shot-2020-04-01-at-9.59.01-PM.jpg" WidthRequest="30" RotationX="12" Opacity="30" />
+            <StackLayout>
+                <Label Text="{Binding Test}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+                <Image Source="https://www.absolutegeeks.com/wp-content/uploads/2020/04/Screen-Shot-2020-04-01-at-9.59.01-PM.jpg" WidthRequest="30" RotationX="12" Opacity="30" />
+                <Label Text="{Binding LeRestaurant.LesPlats[0].LaCategorie.Libelle}"/>
+            </StackLayout>
+        </StackLayout>
+        
+    </ContentPage.Content>
+</ContentPage>

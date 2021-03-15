@@ -1,4 +1,5 @@
 ﻿using PPE42021.Services;
+using PPE42021.Vues;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -8,17 +9,12 @@ namespace PPE42021
 {
     public partial class App : Application
     {
-        private readonly Api _apiServices = new Api();
 
         public App()
         {
             InitializeComponent();
-            Task.Run(async () =>
-            {
-                await _apiServices.GetAllRestaurants("api/restaurants");
-
-            });
-            MainPage = new MainPage();
+            
+            MainPage = new CategorieVue();
         }
 
         
