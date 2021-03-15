@@ -16,7 +16,7 @@ namespace PPE42021.VuesModeles
         private string _test;
         private Restaurant _leRestaurant;
         private ObservableCollection<Restaurant> _maListeRestaurant;
-
+        private bool _isBusy;
 
         #endregion
         #region Constructeurs
@@ -32,6 +32,12 @@ namespace PPE42021.VuesModeles
         {
             get { return _test; }
             set { SetProperty(ref _test, value); }
+        }
+
+        public bool IsBusy
+        {
+            get { return _isBusy; }
+            set { SetProperty(ref _isBusy, value); }
         }
         public Restaurant LeRestaurant
         {
@@ -49,11 +55,11 @@ namespace PPE42021.VuesModeles
         #region Methodes
         public async Task GetListe()
         {
-
+            IsBusy = true;
             await _apiServices.GetAllRestaurants("api/restaurants");
             //await _apiServices.GetAllPlats("api/plats");
             await _apiServices.GetAllMenus("api/menus");
-
+            IsBusy = false;
             LeRestaurant = Restaurant.CollClasse[0];
 
             MaListeRestaurant = this.RemplirListeResto();
