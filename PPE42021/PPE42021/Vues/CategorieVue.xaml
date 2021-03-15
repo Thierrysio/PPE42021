@@ -10,11 +10,11 @@
                 HorizontalOptions="CenterAndExpand" />
             <Image Source="https://www.absolutegeeks.com/wp-content/uploads/2020/04/Screen-Shot-2020-04-01-at-9.59.01-PM.jpg" WidthRequest="30" RotationX="12" Opacity="30" />
             <StackLayout>
-                <Label Text="{Binding Test}"
+                <Label Text="{Binding Libelle}"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
                 <Image Source="{Binding LeRestaurant.Image}"/>
-                <Label Text="{Binding LeRestaurant.LesPlats[0].LaCategorie.Libelle}"/>
+                <Label Text="{Binding LeRestaurant.LesTypesCuisines[0].Libelle}"/>
             </StackLayout>
 
 

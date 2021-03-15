@@ -12,7 +12,7 @@ namespace PPE42021.VuesModeles
     {
         #region Attributs
         private readonly Api _apiServices = new Api();
-
+        private string _libelle;
         private string _test;
         private Restaurant _leRestaurant;
         private ObservableCollection<Restaurant> _maListeRestaurant;
@@ -28,6 +28,12 @@ namespace PPE42021.VuesModeles
         }
         #endregion
         #region Getters setters
+        public string Libelle
+        {
+            get { return _libelle; }
+            set { SetProperty(ref _libelle, value); }
+        }
+
         public string Test
         {
             get { return _test; }
@@ -61,7 +67,7 @@ namespace PPE42021.VuesModeles
             await _apiServices.GetAllMenus("api/menus");
             IsBusy = false;
             LeRestaurant = Restaurant.CollClasse[0];
-
+            Libelle = Restaurant.CollClasse[0].LesTypesCuisines[0].Libelle;
             MaListeRestaurant = this.RemplirListeResto();
         }
         private ObservableCollection<Restaurant> RemplirListeResto()
