@@ -2,6 +2,7 @@
 using PPE42021.Services;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,13 +15,16 @@ namespace PPE42021.VuesModeles
 
         private string _test;
         private Restaurant _leRestaurant;
+        private ObservableCollection<Restaurant> _maListeRestaurant;
+
+
         #endregion
         #region Constructeurs
         public CategorieVueModele()
         {
             GetListe();
             Test = "j'ai reussi";
-            
+
         }
         #endregion
         #region Getters setters
@@ -35,6 +39,12 @@ namespace PPE42021.VuesModeles
             set { SetProperty(ref _leRestaurant, value); }
         }
 
+        public ObservableCollection<Restaurant> MaListeRestaurant
+        {
+            get { return _maListeRestaurant; }
+            set { SetProperty(ref _maListeRestaurant, value); }
+        }
+
         #endregion
         #region Methodes
         public async Task GetListe()
@@ -45,7 +55,20 @@ namespace PPE42021.VuesModeles
             await _apiServices.GetAllMenus("api/menus");
 
             LeRestaurant = Restaurant.CollClasse[0];
+
+            MaListeRestaurant = this.RemplirListeResto();
         }
+        private ObservableCollection<Restaurant> RemplirListeResto()
+        {
+            ObservableCollection<Restaurant> resultat = new ObservableCollection<Restaurant>();
+
+            foreach (Restaurant unRestaurant in Restaurant.CollClasse)
+            {
+                resultat.Add(unRestaurant);
+            }
+
+            return resultat;
+}
         #endregion
     }
 }
