@@ -14,6 +14,7 @@ namespace PPE42021.Modeles
         private string _mdp;
         private string _image;
         private List<Commande> _lesCommandes;
+        
         //private Commande _laCommande;
         public Utilisateur(int id, string nom, string prenom, List<Commande> lesCommandes)
         {
@@ -21,6 +22,7 @@ namespace PPE42021.Modeles
             _nom = nom;
             _prenom = prenom;
             _lesCommandes = lesCommandes;
+            this.SetListeCommandes();
             Utilisateur tc = Utilisateur.CollClasse.Find(x => (x.Id == id));
             if (tc == null) Utilisateur.CollClasse.Add(this);
         }
@@ -36,6 +38,14 @@ namespace PPE42021.Modeles
 
         #endregion
         #region Methodes
+        private void SetListeCommandes()
+        {
+            foreach (Commande uneCommande in this.LesCommandes)
+            {
+                uneCommande.Lutilisateur = this;
+            }
+        }
+
         #endregion
     }
 }

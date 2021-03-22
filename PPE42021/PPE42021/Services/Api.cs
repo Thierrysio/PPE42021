@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PPE42021.Modeles;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,7 @@ namespace PPE42021.Services
 
 
         }
-        public async Task GetAllPlats(string paramUrl)
+        public async Task GetAllUtilisateurs(string paramUrl)
         {
             try
             {
@@ -39,7 +40,7 @@ namespace PPE42021.Services
 
                 var clientHttp = new HttpClient();
                 var json = await clientHttp.GetStringAsync(Constantes.BaseApiAddress + paramUrl);
-                JsonConvert.DeserializeObject<List<Plat>>(json);
+                JsonConvert.DeserializeObject<List<Utilisateur>>(json);
 
             }
             catch (Exception ex)
@@ -68,6 +69,29 @@ namespace PPE42021.Services
 
 
 
+        }
+        public async Task<bool> GetCategorie(string param)
+        {
+            try
+            {
+                JObject oJsonObject = new JObject();
+                oJsonObject.Add("Libelle", param);
+                
+                var client = new HttpClient();
+                var Content = new StringContent(oJsonObject.ToString());
+                var response = await client.PostAsync(Constantes.BaseApiAddress + "api/testCategorie", Content);
+                var content = await response.Content.ReadAsStringAsync();
+                if (content.Contains("ok"))
+                {
+                    
+                    return true;
+                }
+                else { return false; }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
         #endregion
     }

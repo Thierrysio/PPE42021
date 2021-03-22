@@ -20,7 +20,7 @@
 
             <StackLayout>
                 <CollectionView ItemsSource="{Binding MaListeRestaurant}"  VerticalOptions="Fill">
-                    <CollectionView.ItemsLayout>
+                    <CollectionView.ItemsLayout >
                         <GridItemsLayout Orientation="Vertical"
                         Span="1" />
                     </CollectionView.ItemsLayout>
@@ -46,7 +46,20 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
             </StackLayout>
-
+            <StackLayout>
+                <Button Text="Envoyer" 
+                        Command="{Binding EnvoyerCommand}"/>
+            </StackLayout>
+            <StackLayout>
+                <Button Text="Envoyer la categorie" 
+                        Command="{Binding EnvoyerCategorieCommand}"/>
+            </StackLayout>
+            <StackLayout>
+                <Entry 
+                    Placeholder="" Text="{Binding LeNom}"
+                    Completed="TextComplet"/>
+                <Label Text="{Binding UnUtilisateur}" />
+            </StackLayout>
 
         </StackLayout>
         

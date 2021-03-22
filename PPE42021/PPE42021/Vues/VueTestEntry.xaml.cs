@@ -11,20 +11,21 @@ using Xamarin.Forms.Xaml;
 namespace PPE42021.Vues
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CategorieVue : ContentPage
+    public partial class VueTestEntry : ContentPage
     {
-        CategorieVueModele viewModel;
-        
-        public CategorieVue()
+        VueModeleTestEntry viewModel;
+        public VueTestEntry()
         {
             InitializeComponent();
-            BindingContext = viewModel = new CategorieVueModele();
+            BindingContext = viewModel = new VueModeleTestEntry();
+
         }
 
-        private void TextComplet(object sender,EventArgs e)
+        private void EnvoyerTexte(object sender, EventArgs e)
         {
             viewModel.TransfertCommand.Execute(null);
-        }
 
+            //TextRecu.Text ="le texte saisi est : " + TextSaisi.Text;
+        }
     }
 }

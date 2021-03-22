@@ -17,13 +17,13 @@ namespace PPE42021.Modeles
 
         #endregion
         #region Constructeurs
-        public Commande(int id, DateTime dateCommande, bool emporter, List<Plat> lesPlats, Utilisateur lutilisateur)
+        public Commande(int id, DateTime dateCommande, bool emporter, List<Plat> lesPlats, int lutilisateur)
         {
             this._id = id;
             this._dateCommande = dateCommande;
             this._emporter = emporter;
             this._lesPlats = lesPlats;
-            this._lutilisateur = lutilisateur;
+            this._lutilisateur  = null;
             Commande tc = Commande.CollClasse.Find(x => (x.Id == id));
             if (tc == null) Commande.CollClasse.Add(this);
         }
