@@ -1,6 +1,9 @@
-﻿using System;
+﻿using PPE42021.Services;
+using PPE42021.Vues;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -9,6 +12,8 @@ namespace PPE42021.VuesModeles
     class VueModeleTestEntry : BaseVueModele
     {
         #region Attributs
+        private readonly Api _apiServices = new Api();
+
         private string _texteSaisi;
         private string _texteRecu;
 
@@ -23,6 +28,8 @@ namespace PPE42021.VuesModeles
             // 2 eme etape instancier l'objet commande
             ///
 
+            InterrogerCommand = new Command(ActionInterrogerCommand);
+            ChangerPageCommand = new Command(ActionChangerPageCommand);
 
             TransfertCommand = new Command(ActionTransfertCommand);
 
@@ -33,6 +40,8 @@ namespace PPE42021.VuesModeles
         /// Premiere etape de la gestion des commandes
         /// </summary>
         public ICommand TransfertCommand { get; }
+        public ICommand InterrogerCommand { get; }
+        public ICommand ChangerPageCommand { get; }
 
         public string TexteSaisi
         {
@@ -55,6 +64,19 @@ namespace PPE42021.VuesModeles
         {
             TexteRecu = "ca marche";
         }
+        public void ActionInterrogerCommand()
+        {
+            Task.Run(async () =>
+            {
+                bool x = await _apiServices.GetCategorie(TexteSaisi);
+            });
+        }
+        public void ActionChangerPageCommand()
+        {
+            Application.Current.MainPage = new NavigationPage(new CategorieVue());
+
+        }
+
         #endregion
 
 

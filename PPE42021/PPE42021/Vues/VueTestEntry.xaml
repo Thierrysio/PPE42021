@@ -13,8 +13,14 @@
                       Completed="EnvoyerTexte"
 
                         />
+                    <Button Text="Changer page"
+                            Command="{Binding ChangerPageCommand}"
+                            />
                     <Button Text="Envoyer"
                             Command="{Binding TransfertCommand}"/>
+                    <Button Text="Interroger API"
+                            Command="{Binding InterrogerCommand}"/>
+                    
                     <BoxView />
                     <Label Text="{Binding TexteRecu}" />
                     <Label x:Name="TextRecu" />
