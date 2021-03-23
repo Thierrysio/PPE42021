@@ -14,7 +14,7 @@ namespace PPE42021
         {
             InitializeComponent();
             
-            MainPage = new VueTestEntry();
+            MainPage = new Test2Vue();
         }
 
         

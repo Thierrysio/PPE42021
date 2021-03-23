@@ -26,22 +26,7 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Padding="10">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="35" />
-                                   
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                   
-                                    <ColumnDefinition Width="140" />
-                                </Grid.ColumnDefinitions>
-                               
-                                <Label Grid.Column="0"
-                       Text="{Binding Nom}"
-                       FontAttributes="Bold"
-                       LineBreakMode="TailTruncation" />
-                               
-                            </Grid>
+                            
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

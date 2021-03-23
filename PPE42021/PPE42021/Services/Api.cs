@@ -93,6 +93,30 @@ namespace PPE42021.Services
                 return false;
             }
         }
+
+        public async Task<bool> PostUtilisateur(string Param1,string Param2)
+        {
+            try
+            {
+                JObject oJsonObject = new JObject();
+                oJsonObject.Add("Nom", Param1);
+                oJsonObject.Add("Mdp", Param1);
+                var client = new HttpClient();
+                var Content = new StringContent(oJsonObject.ToString());
+                var response = await client.PostAsync(Constantes.BaseApiAddress + "api/PostUtilisateur", Content);
+                var content = await response.Content.ReadAsStringAsync();
+                if (content.Contains("ok"))
+                {
+
+                    return true;
+                }
+                else { return false; }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }
