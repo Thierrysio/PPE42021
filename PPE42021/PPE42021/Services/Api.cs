@@ -100,7 +100,7 @@ namespace PPE42021.Services
             {
                 JObject oJsonObject = new JObject();
                 oJsonObject.Add("Nom", Param1);
-                oJsonObject.Add("Mdp", Param1);
+                oJsonObject.Add("Mdp", Param2);
                 var client = new HttpClient();
                 var Content = new StringContent(oJsonObject.ToString());
                 var response = await client.PostAsync(Constantes.BaseApiAddress + "api/PostUtilisateur", Content);
