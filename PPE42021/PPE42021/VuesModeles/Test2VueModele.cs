@@ -1,12 +1,15 @@
 ﻿using PPE42021.Modeles;
+using PPE42021.Services;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PPE42021.VuesModeles
 {
     class Test2VueModele : BaseVueModele
     {
+        private readonly Api _apiServices;
         #region Attributs
         private string _toto;
         private Utilisateur _unUtilisateur;
@@ -44,7 +47,14 @@ namespace PPE42021.VuesModeles
             set { SetProperty(ref _unUtilisateur, value); }
         }
         #endregion
-        #region
+        #region Methodes
+        public void ActionEnvoyerUtiilisateurCommand()
+        {
+            Task.Run(async () =>
+            {
+                bool x = await _apiServices.PostUtilisateur("sss","zzz");
+            });
+        }
         #endregion
     }
 }

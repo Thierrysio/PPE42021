@@ -5,46 +5,33 @@
     <ContentPage.Content>
         <StackLayout>
             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}"/>
-            <Label Text="{Binding Test}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Image Source="https://www.absolutegeeks.com/wp-content/uploads/2020/04/Screen-Shot-2020-04-01-at-9.59.01-PM.jpg" WidthRequest="30" RotationX="12" Opacity="30" />
-            <StackLayout>
-                <Label Text="{Binding Libelle}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-                <Image Source="{Binding LeRestaurant.Image}"/>
-                <Label Text="{Binding LeRestaurant.LesTypesCuisines[0].Libelle}"/>
-            </StackLayout>
+            <Frame 
+                Padding="0" 
+                Margin="10"
+                VerticalOptions="StartAndExpand"
+                WidthRequest="100" 
+                HeightRequest="100" 
+                HorizontalOptions="Center" 
+                BorderColor="#DC3F3F" CornerRadius="25">
+                <Grid>
+                    <StackLayout>
+                        <Image 
+                            Source="https://freepngimg.com/download/burger/3-2-burger-free-png-image.png" 
+                            Aspect="AspectFill"
+                            Margin="5"
+                            HeightRequest="80" />
+</StackLayout>
+                    <StackLayout VerticalOptions="End">
 
-
-            <StackLayout>
-                <CollectionView ItemsSource="{Binding MaListeRestaurant}"  VerticalOptions="Fill">
-                    <CollectionView.ItemsLayout >
-                        <GridItemsLayout Orientation="Vertical"
-                        Span="1" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-            <StackLayout>
-                <Button Text="Envoyer" 
-                        Command="{Binding EnvoyerCommand}"/>
-            </StackLayout>
-            <StackLayout>
-                <Button Text="Envoyer la categorie" 
-                        Command="{Binding EnvoyerCategorieCommand}"/>
-            </StackLayout>
-            <StackLayout>
-                <Entry 
-                    Placeholder="" Text="{Binding LeNom}"
-                    Completed="TextComplet"/>
-                <Label Text="{Binding UnUtilisateur}" />
-            </StackLayout>
+                        <Label 
+                            Text="HELLO" 
+                            Padding="0,0,0,5" 
+                            HorizontalOptions="Center" 
+                            FontSize="Default" 
+                            FontAttributes="Bold" />
+                    </StackLayout>
+                </Grid>
+            </Frame>
 
         </StackLayout>
         

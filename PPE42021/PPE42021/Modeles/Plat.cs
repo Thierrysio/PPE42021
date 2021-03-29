@@ -6,7 +6,7 @@ using System.Text;
 
 namespace PPE42021.Modeles
 {
-    class Plat
+    public class Plat
     {
         #region Attributs
         public static List<Plat> CollClasse = new List<Plat>();

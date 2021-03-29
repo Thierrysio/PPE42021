@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PPE42021.Modeles
 {
-    class Restaurant
+    public class Restaurant
     {
         #region Attributs
         public static List<Restaurant> CollClasse = new List<Restaurant>();

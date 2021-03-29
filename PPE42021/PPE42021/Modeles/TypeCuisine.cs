@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PPE42021.Modeles
 {
-    class TypeCuisine
+    public class TypeCuisine
     {
         #region Attributs
         public static List<TypeCuisine> CollClasse = new List<TypeCuisine>();

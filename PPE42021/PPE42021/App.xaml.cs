@@ -14,7 +14,7 @@ namespace PPE42021
         {
             InitializeComponent();
             
-            MainPage = new Test2Vue();
+            MainPage = new testNavigationPageVue();
         }
 
         

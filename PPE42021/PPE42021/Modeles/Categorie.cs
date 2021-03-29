@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PPE42021.Modeles
 {
-    class Categorie
+   public class Categorie
     {
         #region Attributs
         public static List<Categorie> CollClasse = new List<Categorie>();
