@@ -103,14 +103,15 @@ namespace PPE42021.Services
                 oJsonObject.Add("Mdp", Param2);
                 var client = new HttpClient();
                 var Content = new StringContent(oJsonObject.ToString());
+
                 var response = await client.PostAsync(Constantes.BaseApiAddress + "api/PostUtilisateur", Content);
                 var content = await response.Content.ReadAsStringAsync();
-                if (content.Contains("ok"))
+                if (content.Contains("pasok"))
                 {
 
-                    return true;
+                    return false;
                 }
-                else { return false; }
+                else { return true; }
             }
             catch (Exception ex)
             {

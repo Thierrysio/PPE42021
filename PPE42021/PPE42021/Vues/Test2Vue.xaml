@@ -11,7 +11,7 @@
                    />
             <Label Text="{Binding TexteRecu}" />
             <Image Source="" />
-            <Button Text="" />
+            <Button Text="" Command="{Binding EnvoyerUtilisateurCommand}" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

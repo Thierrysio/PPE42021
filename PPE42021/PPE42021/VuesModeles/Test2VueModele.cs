@@ -4,12 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PPE42021.VuesModeles
 {
     class Test2VueModele : BaseVueModele
     {
-        private readonly Api _apiServices;
+        private readonly Api _apiServices = new Api();
         #region Attributs
         private string _toto;
         private Utilisateur _unUtilisateur;
@@ -20,12 +22,14 @@ namespace PPE42021.VuesModeles
         #region Constructeurs
         public Test2VueModele()
         {
+            EnvoyerUtilisateurCommand = new Command(ActionEnvoyerUtilisateurCommand);
             UnUtilisateur = new Utilisateur(1, "Disney", "Riri", new List<Commande>());
 
             Toto = "mon premier programme en Xamarin a ete fait par " + UnUtilisateur.Nom;
         }
         #endregion
         #region Getters Setters
+        public ICommand EnvoyerUtilisateurCommand { get; }
         public string TexteSaisi
         {
             get { return _texteSaisi; }
@@ -48,7 +52,7 @@ namespace PPE42021.VuesModeles
         }
         #endregion
         #region Methodes
-        public void ActionEnvoyerUtiilisateurCommand()
+        public void ActionEnvoyerUtilisateurCommand()
         {
             Task.Run(async () =>
             {
