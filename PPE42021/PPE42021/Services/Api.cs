@@ -118,6 +118,54 @@ namespace PPE42021.Services
                 return false;
             }
         }
+
+        public async Task<bool> PostCommande()
+        {
+            try
+            {
+                /*
+                 * creation d'une collection de INT pour
+                 * recuperer les ID
+                 */
+                List<int> Plats = new List<int>();
+
+                JObject oJsonObject = new JObject();
+                /*
+                 * formattage de date pour lecture correcte sur le serveur d'API
+                 */
+                oJsonObject.Add("DateCommande", new DateTime(2021,04,26).ToString("yyyy'-'MM'-'dd"));
+                oJsonObject.Add("Emporter", true);
+                oJsonObject.Add("IdUtilisateur", 1);
+                /* lorsqu' un objet contient une collectiond'objets d'une autre classe
+                 * nous devons envoyer l'ID de chaque objet de cette collection donc 
+                 * une petite moulinette pour recuperer l'ID de chaque objet
+                 * ATTENTION j'ai pris le collclasse pour l'exemple - a vous de prendre la collection de plats de votre commande
+                 */
+                foreach(Plat unPlat in Plat.CollClasse)
+                {
+                    Plats.Add(unPlat.Id);
+                }
+                /*
+                 * formattage de cette collection d'ID au format JSON
+                 */
+                oJsonObject.Add("Plats", JArray.FromObject(Plats));
+                var client = new HttpClient();
+                var Content = new StringContent(oJsonObject.ToString());
+
+                var response = await client.PostAsync(Constantes.BaseApiAddress + "api/PostCommande", Content);
+                var content = await response.Content.ReadAsStringAsync();
+                if (content.Contains("pasok"))
+                {
+
+                    return false;
+                }
+                else { return true; }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
         #endregion
     }
 }
